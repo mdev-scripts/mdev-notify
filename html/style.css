@@ -1,0 +1,117 @@
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1; 
+    }
+    to {
+        transform: translateX(100%); 
+        opacity: 0; 
+    }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    position: absolute;
+    top: 50px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.notify {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px;
+    border-radius: 7px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    min-width: 300px;
+    color: white;
+    position: relative;
+    transform: translateX(100%);
+    animation: slideIn 0.5s forwards;
+}
+
+.notify.hide {
+    animation: slideOut 0.5s forwards;
+}
+
+.notify .title {
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.notify .title i {
+    margin-right: 8px;
+}
+
+.notify.error .title i {
+    color: red;
+}
+
+.notify.success .title i {
+    color: green;
+}
+
+.notify.info .title i {
+    color: blue;
+}
+
+.notify.warning .title i {
+    color: yellow;
+}
+
+.notify .message {
+    font-size: 14px;
+    color: #ccc;
+}
+
+.notify .border {
+    width: 6px;
+    border-radius: 10px 0 0 10px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: height 0.1s linear;
+}
+
+.notify.error .border {
+    background-color: red;
+}
+
+.notify.success .border {
+    background-color: green;
+}
+
+.notify.info .border {
+    background-color: blue;
+}
+
+.notify.warning .border {
+    background-color: yellow;
+}
+
+#notifyContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    position: fixed;
+    top: 2%;
+    right: 20px;
+    z-index: 9999;
+}
